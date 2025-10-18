@@ -92,9 +92,9 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
-  activerecord (~> 7.1)
-  puma (~> 7.1)
-  rackup (~> 2.2)
+  activerecord
+  puma
+  rackup
   sinatra
   sinatra-activerecord
   sinatra-contrib
