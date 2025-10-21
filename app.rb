@@ -12,6 +12,9 @@ end
 class Barber <ActiveRecord::Base
 end
 
+class Contact <ActiveRecord::Base
+end
+
 before do
 	@barbers = Barber.all
 end
@@ -40,5 +43,35 @@ post '/visit' do
 		color: "#{@color}")
 
 	erb "OK, username is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}"
+
+end
+
+get '/contacts' do
+	erb :contacts	
+end
+
+post '/contacts' do 
+
+	@name = params[:name]
+	@email = params[:email]
+	@message = params[:message]
+
+	hh = {
+		:name => "Enter name",
+		:email => "Enter email",
+		:message => "Enter message" }
+
+	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
+
+	if @error != ""
+		return erb :contacts
+	else
+		Contact.create(
+		name: "#{@name}",
+		email: "#{@email}",
+		message: "#{@message}")
+
+		return erb "Message sent successfully"
+	end
 
 end
