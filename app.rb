@@ -32,6 +32,13 @@ post '/visit' do
 	@barber = params[:barber]
 	@color = params[:color]
 
+	Client.create(
+		name: "#{@username}", 
+		phone: "#{@phone}", 
+		datestamp: "#{@datetime}", 
+		barber: "#{@barber}", 
+		color: "#{@color}")
+
 	erb "OK, username is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}"
 
 end
