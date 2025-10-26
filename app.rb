@@ -29,20 +29,10 @@ end
 
 post '/visit' do
 
-	@username = params[:username]
-	@phone = params[:phone]
-	@datetime = params[:datetime]
-	@barber = params[:barber]
-	@color = params[:color]
+	c = Client.new params[:client]
+	c.save
 
-	Client.create(
-		name: "#{@username}", 
-		phone: "#{@phone}", 
-		datestamp: "#{@datetime}", 
-		barber: "#{@barber}", 
-		color: "#{@color}")
-
-	erb "OK, username is #{@username}, #{@phone}, #{@datetime}, #{@barber}, #{@color}"
+	erb "Thanks for visit"
 
 end
 
@@ -52,26 +42,9 @@ end
 
 post '/contacts' do 
 
-	@name = params[:name]
-	@email = params[:email]
-	@message = params[:message]
+	c = Contact.new params[:contact]
+	c.save
 
-	hh = {
-		:name => "Enter name",
-		:email => "Enter email",
-		:message => "Enter message" }
-
-	@error = hh.select {|key,_| params[key] == ""}.values.join(", ")
-
-	if @error != ""
-		return erb :contacts
-	else
-		Contact.create(
-		name: "#{@name}",
-		email: "#{@email}",
-		message: "#{@message}")
-
-		return erb "Message sent successfully"
-	end
+	erb "Thanks for message"
 
 end
