@@ -37,9 +37,12 @@ end
 post '/visit' do
 
 	c = Client.new params[:client]
-	c.save
-
-	erb "Thanks for visit"
+	
+	if c.save
+		erb "Thanks for visit"
+	else
+		erb "<h2> Error </h2>"
+	end
 
 end
 
@@ -50,8 +53,11 @@ end
 post '/contacts' do 
 
 	c = Contact.new params[:contact]
-	c.save
-
-	erb "Thanks for message"
-
+	
+	if c.save
+		erb "Thanks for message"
+	else
+		erb "<h2> Error </h2>"
+	end
+	
 end
