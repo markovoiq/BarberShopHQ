@@ -13,21 +13,18 @@ $(function() {
 
   <div class="form-group">
     <label>Enter your name</label>
-    <input name="client[name]" type="text" class="form-control" placeholder="your name" value="">
+    <input name="client[name]" type="text" class="form-control" placeholder="your name" value="<%= @client.name %>">
   </div>
 
   <div class="form-group">
     <label>Enter your phone number</label>
-    <input name="client[phone]" type="text" class="form-control" placeholder="your phone number" value="">
+    <input name="client[phone]" type="text" class="form-control" placeholder="your phone number" value="<%= @client.phone %>">
   </div>
 
   <div class="form-group">
     <label>When can we expect you?</label>
-    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" placeholder="date and time" value="">
+    <input id="datetimepicker" name="client[datestamp]" type="text" class="form-control" placeholder="date and time" value="<%= @client.datestamp %>">
   </div>
-
-
-
 
   <div class="form-group">
     <label>Select color for hair-paint</label>

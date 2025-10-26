@@ -31,33 +31,37 @@ get '/' do
 end
 
 get '/visit' do
+	@client = Client.new
 	erb :visit
 end
 
 post '/visit' do
 
-	c = Client.new params[:client]
-	
-	if c.save
+	@client = Client.new params[:client]
+
+	if @client.save
 		erb "Thanks for visit"
 	else
-		erb "<h2> Error </h2>"
+		@error = @client.errors.full_messages.first
+		erb :visit
 	end
 
 end
 
 get '/contacts' do
+	@contact = Contact.new
 	erb :contacts	
 end
 
 post '/contacts' do 
 
-	c = Contact.new params[:contact]
+	@contact = Contact.new params[:contact]
 	
-	if c.save
+	if @contact.save
 		erb "Thanks for message"
 	else
-		erb "<h2> Error </h2>"
+		@error = @contact.errors.full_messages.first
+		erb :contacts
 	end
 	
 end
