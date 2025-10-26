@@ -30,6 +30,11 @@ get '/' do
 	erb :index
 end
 
+get '/clients' do
+	@clients = Client.all
+	erb :clients
+end
+
 get '/visit' do
 	@client = Client.new
 	erb :visit
